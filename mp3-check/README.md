@@ -1,19 +1,20 @@
 # What is mp3-check
 **mp3-check.sh** is a shell script for checking (frames) integrity of mp3 encoded audio files. 
+ 
 It launches cli mp3 player [mpg123](https://www.mpg123.de/ "mpg123 Homepage") in test mode to parse all frames of mp3 file looking for any framing or 
 id3 metadata errors. The script can process single file(s) in **DETAIL** mode or any directory subtree in **SURVEY** mode.  
 
-SURVEY mode (a.k.a. DIRECTORY mode) is usefull for overview which mp3 files have problems. The files are listed row-wise
-with integirity result as '[ OK ]' or '[ ERR ]'. In case of error only the first abreviated error message is shown. For 
+**SURVEY** mode (a.k.a. DIRECTORY mode) is usefull for overview which mp3 files have problems. The files are listed row-wise
+with integirity result as '**[ OK ]**' or '**[ ERR ]**'. In case of error only the first abreviated error message is shown. For 
 full report rerun the check in DETAIL mode. At the end of report the summary (number of checked files and runtime) 
 is shown.
 
-DETAIL mode (a.k.a. FILE mode) is used to show all detailed integrity error messages. This mode is usually used for single
+**DETAIL** mode (a.k.a. FILE mode) is used to show all detailed integrity error messages. This mode is usually used for single
  file, however with bash expansion multiple files could be checked in DETAIL mode as well. Fixing the errors is another
  story and other tools could be utilised like kid3 for id3 metadata errors. For framing/sync and junk data errors you can
  use ffmpeg with audio codec 'copy' to recreate frames/headers or just grab source cd again. 
  
-__Motivation:_ I was not able to find any simple unix like (a.k.a. command line) tool for checking integrity of my mp3 collection so I have 
+_Motivation: I was not able to find any simple unix like (a.k.a. command line) tool for checking integrity of my mp3 collection so I have 
 written **mp3-check.sh** for my personal use on linux and I have been using it without any issues since then._
 
 Hope it helps ...
@@ -108,6 +109,8 @@ Scan multiple files for errors in DETAIL mode (use any bash expansion):
  
    **$ mp3-check.sh /media/*.mp3**
  
+    ... long output omitted ... 
+    
 ## Dependencies
 mp3-check requires [mpg123](https://www.mpg123.de/ "mpg123 Homepage"). Installed and active version of mpg123 is shown in header (version 1.16.0):
 
@@ -145,5 +148,5 @@ All reporting is done to the terminal to STDOUT. To get file use standard unix r
 #### History
  version 2016.10 - the initial GitHub release in 2017
 
-_keywords:_ mp3, frame, metadata, id3, integrity, error, check, test, verify, analyze, invalid, broken, bash
+**keywords**: mp3, frame, metadata, id3, integrity, error, check, test, verify, analyze, invalid, broken, bash
 
