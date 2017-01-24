@@ -56,25 +56,25 @@ Some typical usage examples with explanation:
 
 Scan subtree /media/misc for any errors in SURVEY mode:
  
-    **$ mp3-check.sh /media/misc**
+   **$ mp3-check.sh /media/misc**
 
     = MP3 integrity checker 2016.10 = mpg123 1.16.0 = (c) 2016.10 CLI version by Robert =
     
     SURVEY: ./
     =======
-    ./01 - Autobahn.mp3                                                        [ OK ]
-    ./217 - Something Beautiful Remains.mp3                                    [ ERR ] error: No comment text / valid ..
-    ./09 - Knowing Me, Knowing You.mp3                                         [ OK ]
-    ./01 - Autobahn-eof.mp3                                                    [ ERR ] error: Giving up resync after 1..
-    ./204 Chateau.mp3                                                          [ OK ]
-    ./104 Furious Angel.mp3                                                    [ OK ]
+    ./01 - Autobahn.mp3                                        [ OK ]
+    ./217 - Something Beautiful Remains.mp3                    [ ERR ] error: No comment text / valid ..
+    ./09 - Knowing Me, Knowing You.mp3                         [ OK ]
+    ./01 - Autobahn-eof.mp3                                    [ ERR ] error: Giving up resync after 1..
+    ./204 Chateau.mp3                                          [ OK ]
+    ./104 Furious Angel.mp3                                    [ OK ]
     
     = DONE @ Thu 24. november 2016, 17:59:05 CET = 6 file(s) checked in 7 sec = 00h:00m:07s =
 
 
 Scan file "/media/01 - Autobahn-eof.mp3" for all errors in DETAIL mode:
 
-    **$ mp3-check.sh "/media/01 - Autobahn-eof.mp3"**
+   **$ mp3-check.sh "/media/01 - Autobahn-eof.mp3"**
 
     = MP3 integrity checker 2016.10 = mpg123 1.16.0 = (c) 2016.10 CLI version by Robert =
     
@@ -106,7 +106,7 @@ Scan file "/media/01 - Autobahn-eof.mp3" for all errors in DETAIL mode:
  
 Scan multiple files for errors in DETAIL mode (use any bash expansion):
  
-    **$ mp3-check.sh /media/*.mp3**
+   **$ mp3-check.sh /media/*.mp3**
  
 ## Dependencies
 mp3-check requires [mpg123](https://www.mpg123.de/ "mpg123 Homepage"). Installed and active version of mpg123 is shown in header (version 1.16.0):
