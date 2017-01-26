@@ -28,8 +28,7 @@ mpeg123=$( which mpg123 )
 
 # mpg123 version or error message if not found
 #
-mpeg123ver="$ERR mpg123 not found !"
-[[ $mpeg123 ]] && mpeg123ver=$( $mpeg123 --version )
+mpeg123ver="$ERR mpg123 not found !" && [[ $mpeg123 ]] && mpeg123ver=$( $mpeg123 --version )
 
 # header (c) string
 #
