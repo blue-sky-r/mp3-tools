@@ -7,7 +7,7 @@
 # REQUIRES: iconv
 #
 # USAGE: see usage help bellow
-# ============================
+# =============================================
 
 # version
 #
@@ -105,23 +105,33 @@ for f in "$@"
     #
     [[ $f == -to=* ]] && DST_ENC=${f#-to=} && continue
 
+    # split name to dir name ext
+    #
+    ext=${f##*.}
+    name=$( basename "$f" .$ext )
+    dir=$( dirname "$f" )/ && [[ $dir == ./* ]] && dir=${dir##./}
+
     # prepare new name
     #
-	new=$( echo "$f" | $ic -f "$SRC_ENC" -t "$DST_ENC//TRANSLIT" )
+	new=$dir$( echo "$name" | $ic -f "$SRC_ENC" -t "$DST_ENC//TRANSLIT" ).$ext
 
     # show action
     #
-	echo -en "$SRC_ENC -> $DST_ENC:"
+	echo -en "$SRC_ENC -> $DST_ENC: "
+
+    # dry run
+    #
+    [[ $DRY ]] && echo "'$f' -> '$new'" && continue
 
 	# rename only if not dry run
 	#
-	[[ ! $DRY ]] && stat="$ERR" && mv -v "$f" "$new" |&  sed -e 's/mv://' | tr -d "\n" && stat="$OK" && ((CNT++))
+	stat="$ERR" && mv -v "$f" "$new" |&  sed -e 's/mv: //' | tr -d "\n" && stat="$OK" && ((CNT++))
 
 	# result status in non-dry mode only
 	#
-	[[ ! $DRY ]] && echo " $stat"
+	echo " $stat"
 }
 
 # footer
 #
-echo "= Done: $CNT file(s) renamed ="
+echo "= Done: $CNT filename(s) without diacritics ="
